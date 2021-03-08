@@ -2,7 +2,9 @@ package se.sdaproject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 import org.junit.jupiter.api.Test;
+
 
 class LinkedListTests {
 
@@ -24,5 +26,49 @@ class LinkedListTests {
         LinkedList list = new LinkedList();
         String expected = "LinkedList()";
         assertEquals(list.toString(), expected);
+    }
+
+    @Test
+    void testIndexOf(){
+        LinkedList list = new LinkedList();
+        list.add(5);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        int index = list.indexOf(5);
+        assertEquals(0,index);
+    }
+
+    @Test
+    void testGetElement(){
+        LinkedList list = new LinkedList();
+        list.add(3);
+        list.add(9);
+        list.add(8);
+        int element = list.getElement(2);
+        assertEquals(8,element);
+    }
+
+
+    @Test
+    void testGetSize() {
+        LinkedList list = new LinkedList();
+
+        int size = list.getSize();
+        assertEquals(0,size);
+    }
+
+    @Test
+    void testRemoveElement(){
+        LinkedList list = new LinkedList();
+        list.add(3);
+        list.add(6);
+        list.add(4);
+
+
+
+        list.removeItem(0);
+        int size = list.getSize();
+        assertEquals(2,size);
     }
 }

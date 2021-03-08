@@ -7,6 +7,7 @@ class Node {
     int elem;
     // field 2: the reference to the next node
     Node next;
+
     Node(int num) {
         this.elem = num;
         this.next = null;
@@ -31,7 +32,7 @@ public class LinkedList {
             // this means, first != null
 
             // step 2: find the last node
-            
+
             // Key: introduce a temporary variable!
             // we can then update this temporary variable,
             // without changing "first"!
@@ -55,6 +56,76 @@ public class LinkedList {
 
     }
 
+    public int indexOf(int num) {
+        //counter represents index of element
+        int counter = 0;
+        //check if first is an empty linked list
+        if (first.elem == num) {
+            return counter;
+        }
+        Node current = first;
+
+        while (current.next != null) {
+            //move current to the next node
+            current = current.next;
+            //increment counter as its garanteed that the element isnt at first.elem
+            counter += 1;
+            //check if the current.elem == the passed num
+            if (current.elem == num) {
+                //return counter that represent index
+                return counter;
+            }
+        }
+        //current.next == null and the passed num wasn't found
+        return -1;
+
+    }
+
+    public int getElement(int index) {
+        Node current = first;
+        if (current == null) {
+            return -1;
+        }
+        for (int i = 1; i <= index; i++) {
+            current = current.next;
+        }
+        return current.elem;
+    }
+
+    public int getSize() {
+        Node current = first;
+        int counter = 0;
+
+        if (current == null) {
+            return counter;
+        }
+        while (current != null) {
+            current = current.next;
+            counter++;
+        }
+        return counter;
+    }
+
+    public void removeItem(int index) {
+        Node temporary = first;
+        Node previous = null;
+
+        if (temporary != null && temporary.elem != getElement(index)) {
+            first = temporary.next;
+            return;
+        }
+        if (temporary.elem == getElement(index)) {
+            first = temporary.next;
+            return;
+        }
+        while (temporary != null && temporary.elem != getElement(index)) {
+            previous = temporary;
+            temporary = temporary.next;
+        }
+        previous.next = temporary.next;
+    }
+
+
     // useful for testing!
     public String toString() {
         // goal is to return a string like this:
@@ -76,7 +147,7 @@ public class LinkedList {
             // go through the chain of nodes, starting with
             // "first"
 
-            Node current = first;            
+            Node current = first;
             // treat first element specially:
             builder.append("" + current.elem);
 
