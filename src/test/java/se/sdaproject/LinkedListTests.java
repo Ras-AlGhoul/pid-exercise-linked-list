@@ -36,7 +36,7 @@ class LinkedListTests {
         list.add(4);
         list.add(1);
         int index = list.indexOf(5);
-        assertEquals(0,index);
+        assertEquals(1,index);
     }
 
     @Test
@@ -67,7 +67,7 @@ class LinkedListTests {
 
 
 
-        list.removeItem(0);
+        list.removeItem(5);
         int size = list.getSize();
         assertEquals(2,size);
     }

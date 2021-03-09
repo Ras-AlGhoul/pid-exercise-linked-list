@@ -68,7 +68,7 @@ public class LinkedList {
         while (current.next != null) {
             //move current to the next node
             current = current.next;
-            //increment counter as its garanteed that the element isnt at first.elem
+            //increment counter as its granted that the element isn't at first.elem
             counter += 1;
             //check if the current.elem == the passed num
             if (current.elem == num) {
@@ -106,23 +106,20 @@ public class LinkedList {
         return counter;
     }
 
-    public void removeItem(int index) {
-        Node temporary = first;
-        Node previous = null;
-
-        if (temporary != null && temporary.elem != getElement(index)) {
-            first = temporary.next;
+    public void removeItem(int elem) {
+        if (first == null) return;
+        if (first.elem == elem) {
+            first = first.next;
             return;
         }
-        if (temporary.elem == getElement(index)) {
-            first = temporary.next;
-            return;
+        Node current = first;
+        while (current.next != null) {
+            if (current.next.elem == elem) {
+                current.next = current.next.next;
+                return;
+            }
+            current = current.next;
         }
-        while (temporary != null && temporary.elem != getElement(index)) {
-            previous = temporary;
-            temporary = temporary.next;
-        }
-        previous.next = temporary.next;
     }
 
 
