@@ -56,7 +56,7 @@ public class LinkedList {
 
     }
 
-    public int indexOf(int num) {
+    public int getIndexOfElement(int num) {
         //counter represents index of element
         int counter = 0;
         //check if first is an empty linked list
@@ -81,11 +81,9 @@ public class LinkedList {
 
     }
 
-    public int getElement(int index) {
+    public int getElementOfIndex(int index) {
         Node current = first;
-        if (current == null) {
-            return -1;
-        }
+
         for (int i = 1; i <= index; i++) {
             current = current.next;
         }
